@@ -1,4 +1,4 @@
-package com.lbb.demo.test;
+package com.lbb.demo.io.test;
 
 import java.nio.IntBuffer;
 
