@@ -17,7 +17,7 @@ import java.util.Iterator;
 public class GroupChatServer {
     private Selector selector;
     private ServerSocketChannel listenChannel;
-    private static final int PORT = 6667;
+    private static final int PORT = 6687;
 
     public GroupChatServer() {
         try {
@@ -26,6 +26,7 @@ public class GroupChatServer {
             listenChannel.socket().bind(new InetSocketAddress(PORT));
             listenChannel.configureBlocking(false);
             listenChannel.register(selector, SelectionKey.OP_ACCEPT);
+            System.out.println("server 启动了");
         } catch (IOException e) {
             e.printStackTrace();
         }

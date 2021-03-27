@@ -1,6 +1,5 @@
 package com.lbb.demo.io.test;
 
-import io.lettuce.core.StrAlgoArgs;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
@@ -16,14 +15,14 @@ import java.util.Scanner;
  */
 public class GroupChatClient {
     private final String HOST = "127.0.0.1";
-    private final int PORT = 6667;
+    private final int PORT = 6687;
     private Selector selector;
     private SocketChannel socketChannel;
     private String username;
 
     public GroupChatClient() throws IOException {
         selector = Selector.open();
-        socketChannel = SocketChannel.open().bind(new InetSocketAddress(HOST, PORT));
+        socketChannel = SocketChannel.open(new InetSocketAddress(HOST, PORT));
         socketChannel.configureBlocking(false);
         socketChannel.register(selector, SelectionKey.OP_READ);
         username = socketChannel.getLocalAddress().toString().substring(1);
@@ -69,7 +68,7 @@ public class GroupChatClient {
             while (true) {
                 try {
                     chatClient.readInfo();
-                    Thread.sleep(1000);
+                    Thread.sleep(3000);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
