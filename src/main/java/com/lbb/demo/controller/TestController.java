@@ -1,11 +1,12 @@
 package com.lbb.demo.controller;
 
 import com.lbb.demo.common.SpringContextUtils;
+import com.lbb.demo.entity.User;
 import com.lbb.demo.service.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import javax.annotation.Resource;
+import java.util.List;
 
 @RestController
 @RequestMapping("test")
@@ -17,8 +18,8 @@ public class TestController {
     }
 
     @GetMapping("test")
-    public void test() {
+    public List<User> test() {
         UserService userService = SpringContextUtils.getBeanByName("UserServiceImpl", UserService.class);
-        userService.getUsers();
+        return userService.getUsers();
     }
 }

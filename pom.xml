@@ -21,6 +21,8 @@
 		<dubbo.version>2.7.6</dubbo.version>
 		<curator.version>4.0.1</curator.version>
 		<zookeeper.version>3.4.13</zookeeper.version>
+		<sharding.jdbc.version>3.0.0</sharding.jdbc.version>
+		<druid.version>1.1.10</druid.version>
 	</properties>
 
 
@@ -88,6 +90,23 @@
 			<groupId>org.apache.curator</groupId>
 			<artifactId>curator-recipes</artifactId>
 			<version>${curator.version}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/io.netty/netty-all -->
+<!--		<dependency>-->
+<!--			<groupId>io.netty</groupId>-->
+<!--			<artifactId>netty-all</artifactId>-->
+<!--			<version>${netty.version}</version>-->
+<!--		</dependency>-->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>${druid.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.shardingsphere</groupId>
+			<artifactId>sharding-jdbc-spring-boot-starter</artifactId>
+			<version>${sharding.jdbc.version}</version>
 		</dependency>
 
 	</dependencies>

@@ -1,11 +1,13 @@
 package com.lbb.demo.controller;
 
+import com.lbb.demo.dao.UserMapper;
 import com.lbb.demo.entity.User;
-import com.lbb.demo.service.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import java.util.List;
+import java.util.Date;
 import javax.annotation.Resource;
 
 /**
@@ -13,14 +15,35 @@ import javax.annotation.Resource;
  * @date 2020/9/4 下午2:39
  */
 @RestController
-@RequestMapping("user")
+@RequestMapping("/user")
 public class UserController {
 
-//    @Resource
-//    UserService userService;
-//
-//    @GetMapping("list")
-//    public List<User> getUsers() {
-//        return userService.getUsers();
-//    }
+    @Resource
+    private UserMapper userMapper;
+
+    @PostMapping("/user/save")
+    public String save() {
+        for (int i = 0; i < 10; i++) {
+            User user = new User();
+            user.setName("test" + i);
+            user.setCityId(2 % 2 == 0 ? 1 : 2);
+            user.setCreateTime(new Date());
+            user.setSex(i % 2 == 0 ? 1 : 2);
+            user.setPhone("11111111" + i);
+            user.setEmail("xxxxx");
+            user.setCreateTime(new Date());
+            user.setPassword("eeeeeeeeeeee");
+            userMapper.save(user);
+        }
+        return "success";
+    }
+
+    @GetMapping("/user/get/{id}")
+    public User get(@PathVariable Long id) {
+        User user = userMapper.get(id);
+        System.out.println(user.getId());
+        return user;
+    }
+
 }
+

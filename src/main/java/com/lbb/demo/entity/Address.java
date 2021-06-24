@@ -4,24 +4,20 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.Date;
 
 /**
  * @author lbb
- * @date 2020/9/4 下午2:29
+ * @date 2021/6/23 8:06 下午
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class User {
+public class Address {
     private Long id;
+    private String code;
     private String name;
-    private String phone;
-    private String email;
-    private String password;
-    private Integer cityId;
-    private Date createTime;
-    private Integer sex;
+    private String pid;
+    private Integer type;
+    private Integer lit;
 }
-
